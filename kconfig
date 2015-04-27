@@ -1,0 +1,69 @@
+CONFIG_64BIT
+
+# For booting test programs in an initrd.
+CONFIG_BLK_DEV_INITRD
+
+CONFIG_BLK_DEV
+
+# Required for initrd
+CONGIG_BLK_DEV_RAM
+
+# Nearly every computer is SMP these days, so let's build for testing on SMP.
+CONFIG_SMP
+
+# Virtio all runs over fake PCI devices
+CONFIG_PCI
+
+# We really need ELF and shebang support.
+CONFIG_ELF
+CONFIG_BINFMT_SCRIPT
+
+# Optional, but being able to run 32-bit binaries can be useful for testing.
+#CONFIG_IA32_EMULATION
+
+# dpkg and and many other essential userspace tools need file locking.
+CONFIG_FILE_LOCKING
+
+CONFIG_NET
+CONFIG_UNIX
+
+# dhclient needs CONFIG_PACKET
+CONFIG_PACKET
+
+# TCP/IP
+CONFIG_INET
+
+CONFIG_NETDEVICES
+
+CONFIG_VIRTIO_NET
+
+# Virtual 9P networking device
+CONFIG_NET_9P
+
+# Support virtio PCI devices
+CONFIG_VIRTIO_PCI
+
+# Support 9P-based filesystem exports.
+CONFIG_NET_9P_VIRTIO
+CONFIG_9P_FS
+
+# ext2/3/4 support for the root
+CONFIG_EXT4_FS
+CONFIG_EXT4_USE_FOR_EXT23
+
+# Needed for udev
+CONFIG_TMPFS
+CONFIG_INOTIFY_USER
+
+# Needed for the virtio HDD
+CONFIG_VIRTIO_BLK
+
+# Needed for the virtio console
+CONFIG_VIRTIO_CONSOLE
+
+# Build with debug symbols
+# _REDUCED gives significantly better build times, but still keeps key symbols around
+# Drop it if you're going to be doing serious kernel debugging.
+CONFIG_DEBUG_KERNEL
+CONFIG_DEBUG_INFO
+CONFIG_DEBUG_INFO_REDUCED
