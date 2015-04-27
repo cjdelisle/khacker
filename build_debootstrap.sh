@@ -20,12 +20,6 @@ fi
 
 echo "make dirs";
 mkdir vmroot || die "failed to make vmroot dir";
-if [ ! -e shared ]; then
-    mkdir shared || die "failed to make shared dir";
-    printf '\n#!/bin/bash\n\n# This file will be executed in the vm when it is booted\n' > \
-        shared/init.sh || die "failed to create shared/init.sh";
-    chmod a+x shared/init.sh || die "failed to chmod shared/init.sh";
-fi
 
 echo "Building the disk image, copying 4G";
 dd if=/dev/zero of=${img}.tmp bs=1M count=4096 &

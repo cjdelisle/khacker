@@ -1,6 +1,5 @@
 *.img
 *.tmp
-shared
 linux
 vmroot
 dl

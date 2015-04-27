@@ -1,69 +1,34 @@
-CONFIG_64BIT
-
-# For booting test programs in an initrd.
-CONFIG_BLK_DEV_INITRD
-
-CONFIG_BLK_DEV
-
-# Required for initrd
-CONGIG_BLK_DEV_RAM
-
-# Nearly every computer is SMP these days, so let's build for testing on SMP.
-CONFIG_SMP
-
-# Virtio all runs over fake PCI devices
-CONFIG_PCI
-
-# We really need ELF and shebang support.
-CONFIG_ELF
-CONFIG_BINFMT_SCRIPT
-
-# Optional, but being able to run 32-bit binaries can be useful for testing.
-#CONFIG_IA32_EMULATION
-
-# dpkg and and many other essential userspace tools need file locking.
-CONFIG_FILE_LOCKING
-
-CONFIG_NET
-CONFIG_UNIX
-
-# dhclient needs CONFIG_PACKET
-CONFIG_PACKET
-
-# TCP/IP
-CONFIG_INET
-
-CONFIG_NETDEVICES
-
-CONFIG_VIRTIO_NET
+CONFIG_SMP=y
 
 # Virtual 9P networking device
-CONFIG_NET_9P
+CONFIG_NET_9P=y
+CONFIG_NET_9P_DEBUG=n
+CONFIG_9P_FS_POSIX_ACL=n
+CONFIG_9P_FS_SECURITY=n
+CONFIG_VIRTIO_NET=y
+CONFIG_HW_RANDOM_VIRTIO=n
+CONFIG_VIRTIO_BALLOON=n
 
 # Support virtio PCI devices
-CONFIG_VIRTIO_PCI
+CONFIG_VIRTIO_PCI=y
 
 # Support 9P-based filesystem exports.
-CONFIG_NET_9P_VIRTIO
-CONFIG_9P_FS
-
-# ext2/3/4 support for the root
-CONFIG_EXT4_FS
-CONFIG_EXT4_USE_FOR_EXT23
-
-# Needed for udev
-CONFIG_TMPFS
-CONFIG_INOTIFY_USER
+CONFIG_NET_9P_VIRTIO=y
+CONFIG_9P_FS=y
 
 # Needed for the virtio HDD
-CONFIG_VIRTIO_BLK
+CONFIG_VIRTIO_BLK=y
 
 # Needed for the virtio console
-CONFIG_VIRTIO_CONSOLE
+CONFIG_VIRTIO_CONSOLE=y
+
+CONFIG_EARLY_PRINTK=y
 
 # Build with debug symbols
 # _REDUCED gives significantly better build times, but still keeps key symbols around
 # Drop it if you're going to be doing serious kernel debugging.
-CONFIG_DEBUG_KERNEL
-CONFIG_DEBUG_INFO
-CONFIG_DEBUG_INFO_REDUCED
+CONFIG_DEBUG_KERNEL=y
+CONFIG_DEBUG_INFO=y
+CONFIG_DEBUG_INFO_REDUCED=n
+CONFIG_DEBUG_INFO_SPLIT=y
+CONFIG_DEBUG_INFO_DWARF4=y

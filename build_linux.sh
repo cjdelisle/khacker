@@ -20,8 +20,9 @@ cd linux || die "failed cd linux";
 tar -xf ../dl/$KERNEL
 
 cd linux* || die "cd linux*"
-make allnoconfig || die "make allnoconfig";
-cat ../../kconfig | grep -v '#\|^$' | while read x; do
-    sed -i -e "s/$x=n/$x=y/" ./.config;
+make defconfig || die "make defconfig";
+cat ../../kconfig | sed -n -e 's/^\([^#]*\)=[yn]$/\1/p' | while read x; do
+    sed -i -e "/$x[ =]/d" ./.config || echo "$x";
 done
+cat ../../kconfig | grep -v '#' >> ./.config;
 make || die "build linux"
