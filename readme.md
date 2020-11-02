@@ -1,5 +1,7 @@
 # kHacker - Toolkit for developing kernel modules
 
+Status: unmaintained
+
 If you want to develop a kernel module, there's lots of documentation on how to get started,
 even plenty of hello-world kernel modules available to play with, the problem is if you're
 working on non-trivial size programs, you're going to face bugs and when you run into bugs,
